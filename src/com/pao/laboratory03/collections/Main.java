@@ -1,5 +1,7 @@
 package com.pao.laboratory03.collections;
 
+import java.util.*;
+
 /**
  * Exercițiul 1 — Colecții: HashMap și TreeMap
  *
@@ -50,7 +52,46 @@ package com.pao.laboratory03.collections;
  */
 public class Main {
     public static void main(String[] args) {
-        // TODO: implementează cele 3 părți de mai sus
+        // PARTEA A — HashMap (frecvența cuvintelor)
+        String[] words = {"java", "python", "java", "c++", "python", "java", "rust", "c++", "go"};
+        HashMap<String, Integer> h = new HashMap<>();
+        for (String word : words) {
+            h.put(word, h.getOrDefault(word, 0) + 1);
+        }
+        System.out.println("=== PARTEA A: HashMap — frecvența cuvintelor ===");
+        System.out.println("Frecvență:" + h);
+        System.out.println("Conține 'rust'? " + h.containsKey("rust"));
+        System.out.println("Chei: " + h.keySet());
+        System.out.println("Valori: " + h.values());
+        for (Map.Entry<String, Integer> entry : h.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+        // PARTEA B — TreeMap (sortare automată)
+        TreeMap<String, Integer> t = new TreeMap<>(h);
+        System.out.println("\n=== PARTEA B: TreeMap — sortare automată ===");
+        System.out.println("Sortat: " + t);
+
+        System.out.println("Prima cheie: " + t.firstKey());
+        System.out.println("Ultima cheie: " + t.lastKey());
+
+        // PARTEA C — Map cu obiecte
+        System.out.println("\n=== PARTEA C: Map cu obiecte ===");
+
+        Map<String, java.util.List<String>> courseMap = new HashMap<>();
+
+        courseMap.put("PAOJ", new ArrayList<>(Arrays.asList("Ana", "Mihai", "Ion")));
+        courseMap.put("BD", new ArrayList<>(Arrays.asList("Ana", "Elena")));
+
+        System.out.println("Studenți la PAOJ: " + courseMap.get("PAOJ"));
+
+        if (courseMap.containsKey("BD")) {
+            courseMap.get("BD").add("George");
+        }
+        System.out.println("Studenți la BD (actualizat): " + courseMap.get("BD"));
+
+
+
     }
 }
 
