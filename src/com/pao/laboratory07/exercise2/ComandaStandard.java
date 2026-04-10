@@ -20,8 +20,6 @@ public class ComandaStandard implements Comanda {
 
     @Override
     public String descriere() {
-        // Formatează string-ul fix cum cere Checker-ul
-        // Ex: STANDARD: Laptop, pret: 2500.00 lei [PLACED]
         return String.format(java.util.Locale.US, "STANDARD: %s, pret: %.2f lei [%s]", nume, pret, stare);
     }
 }
