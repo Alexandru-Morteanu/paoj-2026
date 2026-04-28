@@ -1,7 +1,6 @@
 package com.pao.project.eticketing.model;
 import java.util.UUID;
 
-// Bifează cerința: Clasă imutabilă (atribute final, fără setteri)
 public final class Bilet {
     private final String idBilet;
     private final String idEveniment;

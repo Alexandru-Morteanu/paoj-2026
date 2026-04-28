@@ -3,7 +3,6 @@ package com.pao.project.eticketing.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-// Implementează Comparable pentru a fi sortat natural cronologic în TreeSet
 public class Eveniment implements Comparable<Eveniment> {
     private String id;
     private String nume;

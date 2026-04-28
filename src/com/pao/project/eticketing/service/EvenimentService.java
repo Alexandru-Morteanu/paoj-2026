@@ -11,14 +11,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-// Bifează cerința: Colecție sortată (TreeSet care folosește Comparable-ul din Eveniment)
 public class EvenimentService {
     private static EvenimentService instance;
     private final Set<Eveniment> evenimente;
     private final List<Tranzactie> tranzactii;
 
     private EvenimentService() {
-        // TreeSet va sorta automat evenimentele cronologic pe baza metodei compareTo
         this.evenimente = new TreeSet<>();
         this.tranzactii = new ArrayList<>();
     }
@@ -43,6 +41,18 @@ public class EvenimentService {
             }
         }
         throw new EvenimentInexistentException("Evenimentul cu ID " + id + " nu a fost gasit!");
+    }
+
+    public Tranzactie achizitioneazaBilete(String idEveniment, String emailClient, String numeCategorie, int numarBilete)
+            throws EvenimentInexistentException, BiletEpuizatException {
+
+        Eveniment e = gasesteEvenimentDupaId(idEveniment);
+
+        e.vindeBilete(numarBilete);
+
+        Tranzactie t = new Tranzactie("TRZ-" + System.currentTimeMillis(), emailClient);
+
+        return t;
     }
 
     public void afiseazaEvenimenteCronologic() {

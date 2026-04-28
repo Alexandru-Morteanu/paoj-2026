@@ -1,6 +1,5 @@
 package com.pao.project.eticketing.model;
 
-// src/com/pao/proiect/eticketing/model/Tranzactie.java
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

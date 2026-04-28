@@ -2,7 +2,6 @@ package com.pao.project.eticketing.model;
 
 import java.util.Objects;
 
-// Clasă abstractă - Bifează cerința de abstractizare
 public abstract class Utilizator {
     protected String id;
     protected String nume;

@@ -4,7 +4,6 @@ import com.pao.project.eticketing.model.Client;
 import java.util.HashMap;
 import java.util.Map;
 
-// Bifează cerința: Serviciu Singleton și Map pentru stocare/indexare
 public class ClientService {
     private static ClientService instance;
     private final Map<String, Client> clientiMap; // Indexare după Email
