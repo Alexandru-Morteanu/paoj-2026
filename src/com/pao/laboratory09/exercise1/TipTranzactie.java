@@ -1,4 +1,5 @@
 package com.pao.laboratory09.exercise1;
 
-public class TipTranzactie {
+public enum TipTranzactie {
+    CREDIT, DEBIT
 }
