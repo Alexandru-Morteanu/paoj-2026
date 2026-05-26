@@ -14,9 +14,10 @@ public final class DatabaseConnection {
     private DatabaseConnection() throws IOException, SQLException {
         Properties props = new Properties();
 
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream("db.properties")) {
+        try (InputStream is = getClass().getClassLoader()
+                .getResourceAsStream("com/pao/laboratory12/resources/db.properties")) {
             if (is == null) {
-                throw new IOException("Nu gasesc db.properties in resources/");
+                throw new IOException("Nu gasesc com/pao/laboratory12/resources/db.properties in classpath");
             }
 
             props.load(is);
