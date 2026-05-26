@@ -15,7 +15,6 @@ public class Main {
         try {
             run();
         } catch (IOException e) {
-            // Keep deterministic checker output.
         }
     }
 

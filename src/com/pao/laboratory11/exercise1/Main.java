@@ -30,6 +30,18 @@ public class Main {
     private static final Comparator<Transaction> BY_RISK_DESC_THEN_ID_ASC =
             Comparator.comparingInt(Main::riskScore).reversed().thenComparingInt(t -> t.id);
 
+    // --- Predicates A ---
+    private static final java.util.function.Predicate<Transaction> amountOverThreshold =
+            tx -> tx.amount >= 1000.0;
+
+    private static final java.util.function.Predicate<Transaction> countryInRisk =
+            tx -> HIGH_RISK_COUNTRIES.contains(tx.country);
+
+    private static final java.util.function.Predicate<Transaction> channelSuspicious =
+            tx -> tx.channel.equals("WEB")
+                    || tx.channel.equals("APP")
+                    || tx.channel.equals("CRYPTO");
+
     public static void main(String[] args) {
         try {
             run();
