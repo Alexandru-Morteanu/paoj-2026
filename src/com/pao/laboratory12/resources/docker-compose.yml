@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: pao-lab12-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: paoj_lab12
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
