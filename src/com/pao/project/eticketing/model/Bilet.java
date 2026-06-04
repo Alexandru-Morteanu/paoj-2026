@@ -1,4 +1,5 @@
 package com.pao.project.eticketing.model;
+
 import java.util.UUID;
 
 public final class Bilet {
@@ -8,7 +9,11 @@ public final class Bilet {
     private final double pret;
 
     public Bilet(String idEveniment, String tipAcces, double pret) {
-        this.idBilet = UUID.randomUUID().toString(); // generare ID unic
+        this(UUID.randomUUID().toString(), idEveniment, tipAcces, pret);
+    }
+
+    public Bilet(String idBilet, String idEveniment, String tipAcces, double pret) {
+        this.idBilet = idBilet;
         this.idEveniment = idEveniment;
         this.tipAcces = tipAcces;
         this.pret = pret;

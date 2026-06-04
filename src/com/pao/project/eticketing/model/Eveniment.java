@@ -25,6 +25,7 @@ public class Eveniment implements Comparable<Eveniment> {
     public int getBileteVandute() { return bileteVandute; }
     public int getLocuriDisponibile() { return locatie.getCapacitate() - bileteVandute; }
 
+    public void setBileteVandute(int bileteVandute) { this.bileteVandute = bileteVandute; }
     public void vindeBilete(int numar) { this.bileteVandute += numar; }
     public void anuleazaBilete(int numar) { this.bileteVandute -= numar; }
 

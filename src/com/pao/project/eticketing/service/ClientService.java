@@ -1,18 +1,22 @@
 package com.pao.project.eticketing.service;
 
 import com.pao.project.eticketing.model.Client;
-import java.util.HashMap;
-import java.util.Map;
+import com.pao.project.eticketing.repository.ClientRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 public class ClientService {
     private static ClientService instance;
-    private final Map<String, Client> clientiMap; // Indexare după Email
+    private final ClientRepository clientRepository;
+    private final AuditService auditService;
 
     private ClientService() {
-        this.clientiMap = new HashMap<>();
+        this.clientRepository = new ClientRepository();
+        this.auditService = AuditService.getInstance();
     }
 
-    public static ClientService getInstance() {
+    public static synchronized ClientService getInstance() {
         if (instance == null) {
             instance = new ClientService();
         }
@@ -21,22 +25,23 @@ public class ClientService {
 
     public void inregistreazaClient(Client client) {
         if (client != null && client.getEmail() != null) {
-            clientiMap.put(client.getEmail(), client);
+            clientRepository.save(client);
+            auditService.log("inregistreaza_client");
         }
     }
 
-    public Client gasesteClientDupaEmail(String email) {
-        return clientiMap.get(email);
+    public Optional<Client> gasesteClientDupaEmail(String email) {
+        auditService.log("cauta_client_dupa_email");
+        return clientRepository.findByEmail(email);
     }
 
-    public void stergeClient(String email) {
-        clientiMap.remove(email);
+    public void stergeClient(String id) {
+        clientRepository.delete(id);
+        auditService.log("sterge_client");
     }
 
-    public void afiseazaTotiClientii() {
-        System.out.println("--- Lista Clienți ---");
-        for (Client c : clientiMap.values()) {
-            System.out.println(c);
-        }
+    public List<Client> afiseazaTotiClientii() {
+        auditService.log("listeaza_clienti");
+        return clientRepository.findAll();
     }
 }

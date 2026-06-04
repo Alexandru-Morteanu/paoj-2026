@@ -27,3 +27,19 @@ Acest proiect reprezintă un sistem de gestiune pentru evenimente, locații și 
 * **Owner**: Definește tipul de acces (VIP, General), prețul și locurile disponibile specifice fiecărei secțiuni dintr-un eveniment.
 * **Tranzactie**: Înregistrarea unei achiziții, care grupează mai multe bilete sub un singur identificator de plată.
 * **Utilizator**: Clasă abstractă care definește atributele comune pentru persoanele din sistem (ID, nume, email).
+
+---
+
+## Etapa II — JDBC, tranzacții, audit
+
+- **SQLite**: `resources/db.properties` + `schema.sql`
+- **Repository-uri**: `Locatie`, `Client`, `Eveniment`, `Tranzactie`, `Bilet`
+- **Tranzacții JDBC**: achiziție bilete (UPDATE eveniment + INSERT tranzacție + INSERT bilete), anulare tranzacție
+- **JOIN-uri** (în `EvenimentRepository`): calendar cronologic, evenimente după locație, istoric client
+- **Audit**: `audit.csv` (append, thread-safe cu `ReentrantLock`)
+
+Rulare din rădăcina proiectului (necesită `lib/sqlite-jdbc.jar` și dependențele SLF4J din `.classpath`):
+
+```bash
+java -cp "output:lib/sqlite-jdbc.jar:lib/slf4j-api-2.0.13.jar:lib/slf4j-simple-2.0.13.jar:src" com.pao.project.eticketing.Main
+```

@@ -17,9 +17,11 @@ public class Tranzactie {
         this.dataTranzactie = LocalDateTime.now();
     }
 
+    public String getId() { return id; }
     public void adaugaBilet(Bilet b) { this.bilete.add(b); }
     public List<Bilet> getBilete() { return bilete; }
     public String getIdClient() { return idClient; }
+    public LocalDateTime getDataTranzactie() { return dataTranzactie; }
 
     @Override
     public String toString() {
