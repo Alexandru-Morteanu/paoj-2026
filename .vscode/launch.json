@@ -1,14 +1,16 @@
 [
     {
         "type": "java",
-        "name": "Launch Main",
+        "name": "Eticketing Main",
         "request": "launch",
-        "srcPaths": [
-            "src"
-        ],
-//        "mainClass": "com.pao.laboratory06.Test",
-        "classpath": [
-            "lib/java-diff-utils-4.15.jar"
-        ]
+        "mainClass": "com.pao.project.eticketing.Main",
+        "projectName": "paoj-2026"
+    },
+    {
+        "type": "java",
+        "name": "Launch Main (laborator)",
+        "request": "launch",
+        "mainClass": "com.pao.laboratory06.exercise1.Test",
+        "projectName": "paoj-2026"
     }
 ]
